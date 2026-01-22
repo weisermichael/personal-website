@@ -3,6 +3,31 @@ resource "aws_s3_bucket" "cloudresume" {
 #   bucket = "cloudresume"
 }
 
+resource "aws_s3_bucket_policy" "site" {
+    bucket = aws_s3_bucket.cloudresume.id
+    
+    policy = jsonencode({
+        "Version": "2008-10-17",
+        "Id": "PolicyForCloudFrontPrivateContent",
+        "Statement": [
+            {
+                "Sid": "AllowCloudFrontServicePrincipal",
+                "Effect": "Allow",
+                "Principal": {
+                    "Service": "cloudfront.amazonaws.com"
+                },
+                "Action": "s3:GetObject",
+                "Resource": "arn:aws:s3:::terraform-20260121211640470400000001/*",
+                "Condition": {
+                    "StringEquals": {
+                      "AWS:SourceArn": "arn:aws:cloudfront::155635440669:distribution/EQ0V6SRROYR12"
+                    }
+                }
+            }
+        ]
+      })
+}
+
 ##################################################################################################################
 
 data "aws_acm_certificate" "cloudresume_cert" {
@@ -18,6 +43,7 @@ resource "aws_cloudfront_distribution" "cloudresume_distribution" {
   origin {
     domain_name = aws_s3_bucket.cloudresume.bucket_regional_domain_name
     origin_id   = "S3-cloudresume-origin"
+    origin_access_control_id = aws_cloudfront_origin_access_control.cloudresume_oac.id
 
     # s3_origin_config {
     #     origin_access_identity = aws_cloudfront_origin_access_identity.cloudresume_oai.cloudfront_access_identity_path
