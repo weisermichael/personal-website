@@ -47,6 +47,41 @@ jobs:
       - name: Checkout Repository
         uses: actions/checkout@v3
 
+      - name: Configure AWS Credentials
+        uses: aws-actions/configure-aws-credentials@v2
+        with:
+          aws-access-key-id: ${{ secrets.AWS_ACCESS_KEY_ID }}
+          aws-secret-access-key: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
+          aws-region: us-west-2
+
+      - name: Get Current Lambda URL from AWS
+        id: get_lambda_url
+        run: |
+          echo "Querying current Lambda URL from AWS..."
+          LAMBDA_URL=$(aws lambda get-function-url-config \
+            --function-name viewCounter \
+            --query 'FunctionUrl' \
+            --output text)
+          echo "lambda_url=$LAMBDA_URL" >> $GITHUB_OUTPUT
+          echo "Retrieved Lambda URL: $LAMBDA_URL"
+
+      - name: Update Lambda URL in script.js
+        run: |
+          LAMBDA_URL="${{ steps.get_lambda_url.outputs.lambda_url }}"
+          echo "Updating script.js with Lambda URL: $LAMBDA_URL"
+          sed -i "s|fetch(\"https://[^\"]*\.lambda-url\.[^\"]*\.on\.aws/\")|fetch(\"$LAMBDA_URL\")|g" frontend/js/script.js
+          echo "Updated script.js - relevant line:"
+          grep -n "fetch" frontend/js/script.js
+
+      - name: Verify URL Replacement
+        run: |
+          if grep -q "${{ steps.get_lambda_url.outputs.lambda_url }}" frontend/js/script.js; then
+            echo "✓ URL replacement successful"
+          else
+            echo "✗ URL replacement failed!"
+            exit 1
+          fi
+
       - uses: jakejarvis/s3-sync-action@master
         with:
           args: --acl private --follow-symlinks --delete
@@ -56,3 +91,9 @@ jobs:
           AWS_SECRET_ACCESS_KEY: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
           AWS_REGION: 'us-west-2'
           SOURCE_DIR: 'frontend'
+
+      - name: Invalidate CloudFront Cache
+        run: |
+          aws cloudfront create-invalidation \
+            --distribution-id EQ0V6SRROYR12 \
+            --paths "/*"

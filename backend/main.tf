@@ -212,6 +212,14 @@ resource "cloudflare_dns_record" "cloudresume_cname" {
 
 ####################################################################################################################
 
+# Outputs
+output "lambda_function_url" {
+  description = "The URL endpoint for the Lambda function"
+  value       = aws_lambda_function_url.viewCounter_url.function_url
+}
+
+####################################################################################################################
+
 variable "cloudflare_email" {
   description = "Cloudflare account email"
   type        = string
