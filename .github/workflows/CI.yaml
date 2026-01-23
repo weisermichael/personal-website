@@ -1,4 +1,4 @@
-name: CI Pipeline
+name : CI Pipeline - frontend
 
 on:
   push:
@@ -6,84 +6,48 @@ on:
       - main
 
 jobs:
-  deploy-backend:
-    name: Deploy Backend Infrastructure
-    runs-on: ubuntu-latest
-    outputs:
-      lambda_url: ${{ steps.tf_output.outputs.lambda_url }}
-    steps:
-      - name: Checkout Repository
-        uses: actions/checkout@v3
+  # deploy-backend:
+  #   name: Deploy Backend Infra
+  #   runs-on: ubuntu-latest
+  #   steps:
+  #     - name: Checkout Repository
+  #       uses: actions/checkout@v3
 
-      - name: Configure AWS Credentials
-        uses: aws-actions/configure-aws-credentials@v2
-        with:
-          aws-access-key-id: ${{ secrets.AWS_ACCESS_KEY_ID }}
-          aws-secret-access-key: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
-          aws-region: us-west-2
+  #     - name: Configure AWS Credentials
+  #       uses: aws-actions/configure-aws-credentials@v2
+  #       with:
+  #         aws-access-key-id: ${{ secrets.AWS_ACCESS_KEY_ID }}
+  #         aws-secret-access-key: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
+  #         aws-region: us-west-2
 
-      - name: Setup Terraform
-        uses: hashicorp/setup-terraform@v2
-        with:
-          terraform_version: 1.5.5
-          terraform_wrapper: false
+  #     - name: Setup Terraform
+  #       uses: hashicorp/setup-terraform@v2
+  #       with:
+  #         terraform_version: 1.5.5
 
-      - name: Terraform Init
-        working-directory: ./backend
-        run: terraform init
+  #     - name: Terraform Init
+  #       working-directory: ./backend
+  #       run: terraform init
 
-      - name: Terraform Validate
-        working-directory: ./backend
-        run: terraform validate
+  #     - name: Terraform Validate
+  #       working-directory: ./backend
+  #       run: terraform validate
 
-      - name: Terraform Plan
-        working-directory: ./backend
-        env:
-          TF_VAR_aws_access_key: ${{ secrets.AWS_ACCESS_KEY_ID }}
-          TF_VAR_aws_secret_key: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
-          TF_VAR_cloudflare_email: ${{ secrets.CLOUDFLARE_EMAIL }}
-          TF_VAR_cloudflare_api_key: ${{ secrets.CLOUDFLARE_API_KEY }}
-          TF_VAR_site_domain: "weiser.me"
-          TF_VAR_subdomain: "resume"
-        run: terraform plan
+  #     - name: Terraform Plan
+  #       working-directory: ./backend
+  #       run: terraform plan
 
-      - name: Terraform Apply
-        working-directory: ./backend
-        env:
-          TF_VAR_aws_access_key: ${{ secrets.AWS_ACCESS_KEY_ID }}
-          TF_VAR_aws_secret_key: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
-          TF_VAR_cloudflare_email: ${{ secrets.CLOUDFLARE_EMAIL }}
-          TF_VAR_cloudflare_api_key: ${{ secrets.CLOUDFLARE_API_KEY }}
-          TF_VAR_site_domain: "weiser.me"
-          TF_VAR_subdomain: "resume"
-        run: terraform apply -auto-approve
-
-      - name: Get Terraform Output
-        id: tf_output
-        working-directory: ./backend
-        run: |
-          LAMBDA_URL=$(terraform output -raw lambda_function_url)
-          echo "lambda_url=$LAMBDA_URL" >> $GITHUB_OUTPUT
-          echo "Lambda URL: $LAMBDA_URL"
-
+  #     - name: Terraform Apply
+  #       working-directory: ./backend
+  #       run: terraform apply -auto-approve
   deploy-frontend:
     name: Deploy Frontend Application
     runs-on: ubuntu-latest
-    needs: deploy-backend
     steps:
       - name: Checkout Repository
         uses: actions/checkout@v3
 
-      - name: Update Lambda URL in script.js
-        run: |
-          LAMBDA_URL="${{ needs.deploy-backend.outputs.lambda_url }}"
-          echo "Updating script.js with Lambda URL: $LAMBDA_URL"
-          sed -i 's|https://.*\.lambda-url\..*\.on\.aws/|'"$LAMBDA_URL"'|g' frontend/js/script.js
-          echo "Updated script.js contents:"
-          cat frontend/js/script.js
-
-      - name: Deploy to S3
-        uses: jakejarvis/s3-sync-action@master
+      - uses: jakejarvis/s3-sync-action@master
         with:
           args: --acl private --follow-symlinks --delete
         env:
@@ -92,13 +56,3 @@ jobs:
           AWS_SECRET_ACCESS_KEY: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
           AWS_REGION: 'us-west-2'
           SOURCE_DIR: 'frontend'
-
-      - name: Invalidate CloudFront Cache
-        env:
-          AWS_ACCESS_KEY_ID: ${{ secrets.AWS_ACCESS_KEY_ID }}
-          AWS_SECRET_ACCESS_KEY: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
-          AWS_DEFAULT_REGION: us-west-2
-        run: |
-          aws cloudfront create-invalidation \
-            --distribution-id EQ0V6SRROYR12 \
-            --paths "/*"
