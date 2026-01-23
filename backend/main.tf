@@ -5,7 +5,7 @@ resource "aws_s3_bucket" "cloudresume" {
 
 resource "aws_s3_bucket_policy" "site" {
     bucket = aws_s3_bucket.cloudresume.id
-    
+
     policy = jsonencode({
         "Version": "2008-10-17",
         "Id": "PolicyForCloudFrontPrivateContent",
@@ -17,10 +17,10 @@ resource "aws_s3_bucket_policy" "site" {
                     "Service": "cloudfront.amazonaws.com"
                 },
                 "Action": "s3:GetObject",
-                "Resource": "arn:aws:s3:::terraform-20260121211640470400000001/*",
+                "Resource": "${aws_s3_bucket.cloudresume.arn}/*",
                 "Condition": {
                     "StringEquals": {
-                      "AWS:SourceArn": "arn:aws:cloudfront::155635440669:distribution/EQ0V6SRROYR12"
+                      "AWS:SourceArn": aws_cloudfront_distribution.cloudresume_distribution.arn
                     }
                 }
             }
