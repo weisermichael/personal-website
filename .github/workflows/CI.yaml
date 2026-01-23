@@ -92,8 +92,8 @@ jobs:
           AWS_REGION: 'us-west-2'
           SOURCE_DIR: 'frontend'
 
-      - name: Invalidate CloudFront Cache
-        run: |
-          aws cloudfront create-invalidation \
-            --distribution-id EQ0V6SRROYR12 \
-            --paths "/*"
+      # - name: Invalidate CloudFront Cache
+      #   run: |
+      #     aws cloudfront create-invalidation \
+      #       --distribution-id EQ0V6SRROYR12 \
+      #       --paths "/*"
