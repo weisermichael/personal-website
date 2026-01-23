@@ -39,6 +39,8 @@ jobs:
       - name: Terraform Plan
         working-directory: ./backend
         env:
+          aws_access_key: ${{ secrets.AWS_ACCESS_KEY_ID }}
+          aws_secret_key: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
           TF_VAR_cloudflare_email: ${{ secrets.CLOUDFLARE_EMAIL }}
           TF_VAR_cloudflare_api_key: ${{ secrets.CLOUDFLARE_API_KEY }}
           TF_VAR_site_domain: "weiser.me"
@@ -48,6 +50,8 @@ jobs:
       - name: Terraform Apply
         working-directory: ./backend
         env:
+          aws_access_key: ${{ secrets.AWS_ACCESS_KEY_ID }}
+          aws_secret_key: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
           TF_VAR_cloudflare_email: ${{ secrets.CLOUDFLARE_EMAIL }}
           TF_VAR_cloudflare_api_key: ${{ secrets.CLOUDFLARE_API_KEY }}
           TF_VAR_site_domain: "weiser.me"
