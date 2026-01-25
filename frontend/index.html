@@ -3,76 +3,456 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>My Resume</title>
+    <meta name="description" content="Michael Weiser - Software Engineer specializing in Cloud, DevOps, and Full-Stack Development">
+    <meta name="keywords" content="Software Engineer, Cloud, AWS, DevOps, Full-Stack Developer">
+    <meta name="author" content="Michael Weiser">
+    <title>Michael Weiser | Software Engineer</title>
+
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Fira+Code:wght@400;500&display=swap" rel="stylesheet">
+
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" integrity="sha512-DTOQO9RWCH3ppGqcWaEA1BIZOC6xxalwEsw9c2QQeAIftl+Vegovlnee1c9QX4TctnWMn13TZye+giMm8e2LwA==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+
+    <!-- Custom CSS -->
     <link rel="stylesheet" href="css/style.css">
 </head>
 <body>
-    <header>
-        <h1>Michael Weiser</h1>
-        <p>Software Engineer</p>
-        <p class="counter-number"> Views: 0</p>
-        <div class="contact">
-            <p>Email: weiserjmichael@gmail.com</p>
-            <p>Phone: (858) 353-5179</p>
-            <p>LinkedIn: linkedin.com/in/michaelweiser</p>
-            <p>GitHub: github.com/michaelweiser</p>
-        </div>
-    </header>
 
-    <section id="summary">
-        <h2>Professional Summary</h2>
-        <p>Experienced software developer with a passion for creating efficient and user-friendly applications. Skilled in various programming languages and frameworks, with a strong background in web development.</p>
+    <!-- Navigation Bar -->
+    <nav id="navbar">
+        <div class="nav-container">
+            <div class="nav-logo">
+                <span class="logo-text">MW</span>
+            </div>
+            <ul class="nav-links">
+                <li><a href="#about">About</a></li>
+                <li><a href="#experience">Experience</a></li>
+                <li><a href="#projects">Projects</a></li>
+                <li><a href="#skills">Skills</a></li>
+                <li><a href="#certifications">Certifications</a></li>
+                <li><a href="#education">Education</a></li>
+                <li><a href="#contact">Contact</a></li>
+            </ul>
+            <div class="nav-right">
+                <div class="visitor-counter">
+                    <i class="fa-solid fa-eye"></i>
+                    <span class="counter-number">Views: 0</span>
+                </div>
+                <a href="#" class="btn btn-outline download-resume-btn">
+                    <i class="fa-solid fa-download"></i> Resume
+                </a>
+                <button class="hamburger" aria-label="Toggle mobile menu">
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                </button>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section id="hero">
+        <div class="hero-content">
+            <div class="hero-text">
+                <h1>Michael Weiser</h1>
+                <p class="hero-subtitle">
+                    <span class="typing-effect">Cloud Engineer</span>
+                </p>
+                <p class="hero-description">Building scalable cloud infrastructure and modern web applications</p>
+                <div class="hero-buttons">
+                    <a href="#projects" class="btn btn-primary">View Projects</a>
+                    <a href="#contact" class="btn btn-outline">Contact Me</a>
+                </div>
+            </div>
+        </div>
     </section>
 
+    <!-- About Section -->
+    <section id="about">
+        <div class="container">
+            <h2>About Me</h2>
+            <div class="about-content">
+                <div class="about-text">
+                    <p>Experienced software developer with a passion for creating efficient and user-friendly applications. Skilled in various programming languages and frameworks, with a strong background in web development and cloud infrastructure.</p>
+                    <p>Specializing in AWS cloud services, DevOps practices, and full-stack development. I focus on building scalable, maintainable solutions that solve real-world problems.</p>
+                    <div class="contact-info">
+                        <a href="mailto:weiserjmichael@gmail.com" class="contact-link">
+                            <i class="fa-solid fa-envelope"></i>
+                            weiserjmichael@gmail.com
+                        </a>
+                        <a href="tel:+18583535179" class="contact-link">
+                            <i class="fa-solid fa-phone"></i>
+                            (858) 353-5179
+                        </a>
+                        <a href="https://linkedin.com/in/michaelweiser" target="_blank" rel="noopener noreferrer" class="contact-link">
+                            <i class="fa-brands fa-linkedin"></i>
+                            linkedin.com/in/michaelweiser
+                        </a>
+                        <a href="https://github.com/michaelweiser" target="_blank" rel="noopener noreferrer" class="contact-link">
+                            <i class="fa-brands fa-github"></i>
+                            github.com/michaelweiser
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Experience Section -->
     <section id="experience">
-        <h2>Work Experience</h2>
-        <div class="job">
-            <h3>Senior Software Developer</h3>
-            <p class="company">Tech Company Inc.</p>
-            <p class="dates">January 2020 - Present</p>
-            <ul>
-                <li>Developed and maintained web applications using React and Node.js</li>
-                <li>Collaborated with cross-functional teams to deliver high-quality software</li>
-                <li>Implemented best practices for code quality and performance</li>
-            </ul>
-        </div>
-        <div class="job">
-            <h3>Junior Developer</h3>
-            <p class="company">Startup XYZ</p>
-            <p class="dates">June 2018 - December 2019</p>
-            <ul>
-                <li>Assisted in building mobile applications with Flutter</li>
-                <li>Participated in code reviews and testing</li>
-                <li>Learned and applied agile development methodologies</li>
-            </ul>
+        <div class="container">
+            <h2>Work Experience</h2>
+            <div class="experience-timeline">
+                <div class="experience-card card fade-in">
+                    <div class="experience-header">
+                        <div>
+                            <h3>Senior Software Developer</h3>
+                            <p class="company">
+                                <i class="fa-solid fa-building"></i>
+                                Tech Company Inc.
+                            </p>
+                        </div>
+                        <p class="dates">
+                            <i class="fa-solid fa-calendar"></i>
+                            January 2020 - Present
+                        </p>
+                    </div>
+                    <ul class="responsibilities">
+                        <li>Developed and maintained web applications using React and Node.js</li>
+                        <li>Collaborated with cross-functional teams to deliver high-quality software</li>
+                        <li>Implemented best practices for code quality and performance</li>
+                    </ul>
+                    <div class="tech-tags">
+                        <span class="tech-tag">React</span>
+                        <span class="tech-tag">Node.js</span>
+                        <span class="tech-tag">JavaScript</span>
+                    </div>
+                </div>
+
+                <div class="experience-card card fade-in stagger-1">
+                    <div class="experience-header">
+                        <div>
+                            <h3>Junior Developer</h3>
+                            <p class="company">
+                                <i class="fa-solid fa-building"></i>
+                                Startup XYZ
+                            </p>
+                        </div>
+                        <p class="dates">
+                            <i class="fa-solid fa-calendar"></i>
+                            June 2018 - December 2019
+                        </p>
+                    </div>
+                    <ul class="responsibilities">
+                        <li>Assisted in building mobile applications with Flutter</li>
+                        <li>Participated in code reviews and testing</li>
+                        <li>Learned and applied agile development methodologies</li>
+                    </ul>
+                    <div class="tech-tags">
+                        <span class="tech-tag">Flutter</span>
+                        <span class="tech-tag">Dart</span>
+                        <span class="tech-tag">Agile</span>
+                    </div>
+                </div>
+            </div>
         </div>
     </section>
 
-    <section id="education">
-        <h2>Education</h2>
-        <div class="education-item">
-            <h3>Bachelor of Science in Computer Science</h3>
-            <p class="institution">University of Example</p>
-            <p class="dates">2014 - 2018</p>
+    <!-- Projects Section -->
+    <section id="projects">
+        <div class="container">
+            <h2>Featured Projects</h2>
+            <div class="projects-grid">
+                <div class="project-card card fade-in">
+                    <div class="project-image">
+                        <i class="fa-solid fa-cloud"></i>
+                    </div>
+                    <div class="project-content">
+                        <h3>Cloud Resume Website</h3>
+                        <p>A serverless resume website built with AWS services, featuring a visitor counter using Lambda, DynamoDB, and CloudFront CDN.</p>
+                        <div class="tech-tags">
+                            <span class="tech-tag">AWS Lambda</span>
+                            <span class="tech-tag">DynamoDB</span>
+                            <span class="tech-tag">CloudFront</span>
+                            <span class="tech-tag">Terraform</span>
+                        </div>
+                        <div class="project-links">
+                            <a href="https://github.com/michaelweiser/cloud-resume" target="_blank" rel="noopener noreferrer" class="btn btn-outline btn-sm">
+                                <i class="fa-brands fa-github"></i> GitHub
+                            </a>
+                            <a href="https://resume.weiser.me" target="_blank" rel="noopener noreferrer" class="btn btn-outline btn-sm">
+                                <i class="fa-solid fa-external-link-alt"></i> Live Demo
+                            </a>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="project-card card fade-in stagger-1">
+                    <div class="project-image">
+                        <i class="fa-solid fa-server"></i>
+                    </div>
+                    <div class="project-content">
+                        <h3>Infrastructure as Code</h3>
+                        <p>Automated cloud infrastructure deployment using Terraform and GitHub Actions CI/CD for seamless updates.</p>
+                        <div class="tech-tags">
+                            <span class="tech-tag">Terraform</span>
+                            <span class="tech-tag">GitHub Actions</span>
+                            <span class="tech-tag">AWS</span>
+                            <span class="tech-tag">IaC</span>
+                        </div>
+                        <div class="project-links">
+                            <a href="https://github.com/michaelweiser" target="_blank" rel="noopener noreferrer" class="btn btn-outline btn-sm">
+                                <i class="fa-brands fa-github"></i> GitHub
+                            </a>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="project-card card fade-in stagger-2">
+                    <div class="project-image">
+                        <i class="fa-solid fa-code"></i>
+                    </div>
+                    <div class="project-content">
+                        <h3>Full-Stack Web App</h3>
+                        <p>Modern web application with React frontend, Node.js backend, and PostgreSQL database.</p>
+                        <div class="tech-tags">
+                            <span class="tech-tag">React</span>
+                            <span class="tech-tag">Node.js</span>
+                            <span class="tech-tag">PostgreSQL</span>
+                            <span class="tech-tag">Docker</span>
+                        </div>
+                        <div class="project-links">
+                            <a href="https://github.com/michaelweiser" target="_blank" rel="noopener noreferrer" class="btn btn-outline btn-sm">
+                                <i class="fa-brands fa-github"></i> GitHub
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
         </div>
     </section>
 
+    <!-- Skills Section -->
     <section id="skills">
-        <h2>Skills</h2>
-        <ul>
-            <li>JavaScript</li>
-            <li>Python</li>
-            <li>React</li>
-            <li>Node.js</li>
-            <li>HTML/CSS</li>
-            <li>Git</li>
-        </ul>
+        <div class="container">
+            <h2>Technical Skills</h2>
+            <div class="skills-container">
+                <div class="skill-category card fade-in">
+                    <h3><i class="fa-solid fa-code"></i> Languages</h3>
+                    <div class="skill-list">
+                        <div class="skill-item">
+                            <i class="fa-brands fa-js"></i>
+                            <span>JavaScript</span>
+                        </div>
+                        <div class="skill-item">
+                            <i class="fa-brands fa-python"></i>
+                            <span>Python</span>
+                        </div>
+                        <div class="skill-item">
+                            <i class="fa-brands fa-html5"></i>
+                            <span>HTML/CSS</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="skill-category card fade-in stagger-1">
+                    <h3><i class="fa-solid fa-cubes"></i> Frameworks & Libraries</h3>
+                    <div class="skill-list">
+                        <div class="skill-item">
+                            <i class="fa-brands fa-react"></i>
+                            <span>React</span>
+                        </div>
+                        <div class="skill-item">
+                            <i class="fa-brands fa-node-js"></i>
+                            <span>Node.js</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="skill-category card fade-in stagger-2">
+                    <h3><i class="fa-solid fa-wrench"></i> Tools & Technologies</h3>
+                    <div class="skill-list">
+                        <div class="skill-item">
+                            <i class="fa-brands fa-git-alt"></i>
+                            <span>Git</span>
+                        </div>
+                        <div class="skill-item">
+                            <i class="fa-brands fa-docker"></i>
+                            <span>Docker</span>
+                        </div>
+                        <div class="skill-item">
+                            <i class="fa-solid fa-database"></i>
+                            <span>PostgreSQL</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="skill-category card fade-in stagger-3">
+                    <h3><i class="fa-solid fa-cloud"></i> Cloud & DevOps</h3>
+                    <div class="skill-list">
+                        <div class="skill-item">
+                            <i class="fa-brands fa-aws"></i>
+                            <span>AWS</span>
+                        </div>
+                        <div class="skill-item">
+                            <i class="fa-solid fa-server"></i>
+                            <span>Terraform</span>
+                        </div>
+                        <div class="skill-item">
+                            <i class="fa-solid fa-code-branch"></i>
+                            <span>CI/CD</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
     </section>
 
+    <!-- Certifications Section -->
+    <section id="certifications">
+        <div class="container">
+            <h2>Certifications & Awards</h2>
+            <div class="certifications-grid">
+                <div class="cert-card card fade-in">
+                    <div class="cert-icon">
+                        <i class="fa-brands fa-aws"></i>
+                    </div>
+                    <div class="cert-content">
+                        <h3>AWS Certified Solutions Architect</h3>
+                        <p class="cert-issuer">Amazon Web Services</p>
+                        <p class="cert-date">
+                            <i class="fa-solid fa-calendar"></i>
+                            Expected 2026
+                        </p>
+                    </div>
+                </div>
+
+                <div class="cert-card card fade-in stagger-1">
+                    <div class="cert-icon">
+                        <i class="fa-brands fa-aws"></i>
+                    </div>
+                    <div class="cert-content">
+                        <h3>AWS Certified Developer</h3>
+                        <p class="cert-issuer">Amazon Web Services</p>
+                        <p class="cert-date">
+                            <i class="fa-solid fa-calendar"></i>
+                            Expected 2026
+                        </p>
+                    </div>
+                </div>
+
+                <div class="cert-card card fade-in stagger-2">
+                    <div class="cert-icon">
+                        <i class="fa-solid fa-trophy"></i>
+                    </div>
+                    <div class="cert-content">
+                        <h3>Cloud Resume Challenge</h3>
+                        <p class="cert-issuer">A Cloud Guru</p>
+                        <p class="cert-date">
+                            <i class="fa-solid fa-calendar"></i>
+                            2026
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Education Section -->
+    <section id="education">
+        <div class="container">
+            <h2>Education</h2>
+            <div class="education-card card fade-in">
+                <div class="education-icon">
+                    <i class="fa-solid fa-graduation-cap"></i>
+                </div>
+                <div class="education-content">
+                    <h3>Bachelor of Science in Computer Science</h3>
+                    <p class="institution">
+                        <i class="fa-solid fa-university"></i>
+                        University of Example
+                    </p>
+                    <p class="dates">
+                        <i class="fa-solid fa-calendar"></i>
+                        2014 - 2018
+                    </p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section id="contact">
+        <div class="container">
+            <h2>Get In Touch</h2>
+            <div class="contact-card card fade-in">
+                <p class="contact-intro">I'm always open to discussing new projects, opportunities, or just connecting with fellow developers.</p>
+                <div class="contact-methods">
+                    <a href="mailto:weiserjmichael@gmail.com" class="contact-method">
+                        <div class="contact-icon">
+                            <i class="fa-solid fa-envelope"></i>
+                        </div>
+                        <div class="contact-details">
+                            <h4>Email</h4>
+                            <p>weiserjmichael@gmail.com</p>
+                        </div>
+                    </a>
+                    <a href="tel:+18583535179" class="contact-method">
+                        <div class="contact-icon">
+                            <i class="fa-solid fa-phone"></i>
+                        </div>
+                        <div class="contact-details">
+                            <h4>Phone</h4>
+                            <p>(858) 353-5179</p>
+                        </div>
+                    </a>
+                    <a href="https://linkedin.com/in/michaelweiser" target="_blank" rel="noopener noreferrer" class="contact-method">
+                        <div class="contact-icon">
+                            <i class="fa-brands fa-linkedin"></i>
+                        </div>
+                        <div class="contact-details">
+                            <h4>LinkedIn</h4>
+                            <p>linkedin.com/in/michaelweiser</p>
+                        </div>
+                    </a>
+                    <a href="https://github.com/michaelweiser" target="_blank" rel="noopener noreferrer" class="contact-method">
+                        <div class="contact-icon">
+                            <i class="fa-brands fa-github"></i>
+                        </div>
+                        <div class="contact-details">
+                            <h4>GitHub</h4>
+                            <p>github.com/michaelweiser</p>
+                        </div>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
     <footer>
-        <p>&copy; 2026 Michael Weiser. All rights reserved.</p>
+        <div class="container">
+            <div class="footer-content">
+                <p>&copy; 2026 Michael Weiser. All rights reserved.</p>
+                <div class="social-links">
+                    <a href="https://github.com/michaelweiser" target="_blank" rel="noopener noreferrer" aria-label="GitHub">
+                        <i class="fa-brands fa-github"></i>
+                    </a>
+                    <a href="https://linkedin.com/in/michaelweiser" target="_blank" rel="noopener noreferrer" aria-label="LinkedIn">
+                        <i class="fa-brands fa-linkedin"></i>
+                    </a>
+                </div>
+            </div>
+            <button class="back-to-top" aria-label="Back to top">
+                <i class="fa-solid fa-arrow-up"></i>
+            </button>
+        </div>
     </footer>
 
+    <!-- JavaScript -->
     <script src="js/script.js"></script>
 </body>
 </html>
