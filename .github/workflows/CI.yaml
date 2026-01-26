@@ -92,8 +92,18 @@ jobs:
           AWS_REGION: 'us-west-2'
           SOURCE_DIR: 'frontend'
 
-      # - name: Invalidate CloudFront Cache
-      #   run: |
-      #     aws cloudfront create-invalidation \
-      #       --distribution-id EQ0V6SRROYR12 \
-      #       --paths "/*"
+      - name: Get CloudFront Distribution ID
+        id: get_distribution_id
+        run: |
+          echo "Querying CloudFront distribution ID from AWS..."
+          DISTRIBUTION_ID=$(aws cloudfront list-distributions \
+            --query "DistributionList.Items[?Origins.Items[?contains(DomainName, '${{ secrets.AWS_S3_BUCKET }}')]].Id | [0]" \
+            --output text)
+          echo "distribution_id=$DISTRIBUTION_ID" >> $GITHUB_OUTPUT
+          echo "Retrieved Distribution ID: $DISTRIBUTION_ID"
+
+      - name: Invalidate CloudFront Cache
+        run: |
+          aws cloudfront create-invalidation \
+            --distribution-id ${{ steps.get_distribution_id.outputs.distribution_id }} \
+            --paths "/*"
