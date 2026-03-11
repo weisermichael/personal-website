@@ -2,7 +2,7 @@ const counter = document.querySelector('.counter-number');
 
 async function updateCounter() {
     try {
-        let response = await fetch('https://f6h5vxmxnalzynul32fctncntq0knwca.lambda-url.us-west-2.on.aws/');
+        let response = await fetch("https://f6h5vxmxnalzynul32fctncntq0knwca.lambda-url.us-west-2.on.aws/");
         if (!response.ok) throw new Error('Network error');
         let data = await response.json();
         counter.textContent = data;
