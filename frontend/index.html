@@ -3,78 +3,154 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>My Resume</title>
+    <title>Michael Weiser | Software Engineer</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,600;0,700;1,400&family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;0,9..40,500;1,9..40,300&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="css/style.css">
 </head>
 <body>
-    <header>
-        <h1>Michael Weiser</h1>
-        <p>Software Engineer</p>
-        <p class="counter-number"> Views: 0</p>
-        <div class="contact">
-            <p>Email: michael@weiser.me</p>
-            <p>Phone: (858) 353-5179</p>
-            <p>LinkedIn: linkedin.com/in/michael-j-weiser</p>
-            <p>GitHub: github.com/weisermichael</p>
-        </div>
-    </header>
+    <div class="grain"></div>
+    
+    <nav class="nav">
+        <a href="#work" class="nav-link">Work</a>
+        <a href="#about" class="nav-link">About</a>
+        <a href="#contact" class="nav-link">Contact</a>
+        <span class="nav-counter counter-number" data-count="0">0</span>
+    </nav>
 
-    <section id="summary">
-        <h2>Professional Summary</h2>
-        <p>Experienced software developer with a passion for creating efficient and user-friendly applications. Skilled in various programming languages and frameworks, with a strong background in web development.</p>
-    </section>
+    <main>
+        <section class="hero">
+            <div class="hero-content">
+                <p class="hero-label">Software Engineer</p>
+                <h1 class="hero-title">
+                    Michael<br>
+                    <span class="hero-title-accent">Weiser</span>
+                </h1>
+                <p class="hero-intro">
+                    Building robust systems and elegant interfaces. 
+                    Currently crafting solutions at <strong>Sorenson Communications</strong>.
+                </p>
+            </div>
+            <div class="hero-aside">
+                <div class="hero-stat">
+                    <span class="hero-stat-number">4+</span>
+                    <span class="hero-stat-label">Years Experience</span>
+                </div>
+                <div class="hero-lines"></div>
+            </div>
+        </section>
 
-    <section id="experience">
-        <h2>Work Experience</h2>
-        <div class="job">
-            <h3>Software Test Engineer II</h3>
-            <p class="company">Sorenson Communications</p>
-            <p class="dates">July 2022 - Present</p>
-            <ul>
-                <li>Developed and maintained backend APIs and integration tests for VoIP stack components, enhancing system reliability and security</li>
-                <li>Implemented and optimized CI/CD pipelines using GitHub Actions, Terraform, and Ansible reducing deployment time and increasing developer efficiency</li>
-                <li>Automated test reporting via TestRail CLI, ensuring regulatory compliance and clear traceability for audits</li>
-                <li>Designed and deployed security features (IP aliasing, SIP-header anonymization) to protect user data, aligning with GDPR and industry security best practices</li>
-                <li>Diagnosed and resolved critical production issues using observability tools (HEPIC, dataset), improving platform stability</li>
-                <li>Developed load tests to identify bottlenecks, ensuring high availability and scalability of infrastructure</li>
-            </ul>
-        </div>
-        <div class="job">
-            <h3>Software Developer</h3>
-            <p class="company">Roll</p>
-            <p class="dates">March 2022 - August 2022</p>
-            <ul>
-                <li>Built a Node.js-based service for restaurant POS terminals to capture receipt data and integrate with backend APIs.</li>
-                <li>Expanded API functionality (Google Cloud Functions) to process and route structured transaction data for real-time billing.</li>
-                <li>Implemented parsing logic to extract location, customer, and order details from multiple receipt formats, increasing automation efficiency.</li>
-                <li>Designed and prototyped a hardware-based packet-sniffing device (Raspberry Pi) to support platform-agnostic data extraction.</li>
-            </ul>
-        </div>
-    </section>
+        <section id="work" class="section section--work">
+            <header class="section-header">
+                <span class="section-number">01</span>
+                <h2 class="section-title">Experience</h2>
+            </header>
 
-    <section id="education">
-        <h2>Education</h2>
-        <div class="education-item">
-            <h3>Bachelor of Science in Electrical Engineering</h3>
-            <p class="institution">California Polytechnic State University, San Luis Obispo</p>
-            <!-- <p class="dates">2014 - 2018</p> -->
-        </div>
-    </section>
+            <div class="timeline">
+                <article class="timeline-item">
+                    <div class="timeline-marker"></div>
+                    <div class="timeline-content">
+                        <div class="timeline-header">
+                            <h3 class="timeline-role">Software Test Engineer II</h3>
+                            <span class="timeline-company">Sorenson Communications</span>
+                        </div>
+                        <span class="timeline-date">2022 — Present</span>
+                        <ul class="timeline-details">
+                            <li>Developed backend APIs and integration tests for VoIP stack components</li>
+                            <li>Implemented CI/CD pipelines using GitHub Actions, Terraform, and Ansible</li>
+                            <li>Automated test reporting via TestRail CLI for regulatory compliance</li>
+                            <li>Designed security features aligned with GDPR and industry best practices</li>
+                            <li>Built load tests ensuring high availability and scalability</li>
+                        </ul>
+                    </div>
+                </article>
 
-    <section id="skills">
-        <h2>Skills</h2>
-        <ul>
-            <li>JavaScript</li>
-            <li>Python</li>
-            <li>React</li>
-            <li>Node.js</li>
-            <li>HTML/CSS</li>
-            <li>Git</li>
-        </ul>
-    </section>
+                <article class="timeline-item">
+                    <div class="timeline-marker"></div>
+                    <div class="timeline-content">
+                        <div class="timeline-header">
+                            <h3 class="timeline-role">Software Developer</h3>
+                            <span class="timeline-company">Roll</span>
+                        </div>
+                        <span class="timeline-date">2022</span>
+                        <ul class="timeline-details">
+                            <li>Built Node.js service for restaurant POS receipt data capture</li>
+                            <li>Expanded Google Cloud Functions for real-time billing</li>
+                            <li>Designed hardware packet-sniffing prototype on Raspberry Pi</li>
+                        </ul>
+                    </div>
+                </article>
+            </div>
+        </section>
 
-    <footer>
-        <p>&copy; 2026 Michael Weiser. All rights reserved.</p>
+        <section id="about" class="section section--about">
+            <header class="section-header">
+                <span class="section-number">02</span>
+                <h2 class="section-title">About</h2>
+            </header>
+
+            <div class="about-grid">
+                <div class="about-bio">
+                    <p class="about-text">
+                        Experienced software developer with a passion for creating efficient 
+                        and user-friendly applications. Skilled in various programming languages 
+                        and frameworks, with a strong background in web development.
+                    </p>
+                </div>
+                <div class="about-details">
+                    <div class="about-block">
+                        <h4 class="about-label">Education</h4>
+                        <p class="about-value">BS Electrical Engineering</p>
+                        <p class="about-sub">Cal Poly San Luis Obispo</p>
+                    </div>
+                    <div class="about-block">
+                        <h4 class="about-label">Stack</h4>
+                        <div class="skills-grid">
+                            <span class="skill-tag">JavaScript</span>
+                            <span class="skill-tag">Python</span>
+                            <span class="skill-tag">React</span>
+                            <span class="skill-tag">Node.js</span>
+                            <span class="skill-tag">Terraform</span>
+                            <span class="skill-tag">AWS</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="contact" class="section section--contact">
+            <header class="section-header">
+                <span class="section-number">03</span>
+                <h2 class="section-title">Contact</h2>
+            </header>
+
+            <div class="contact-content">
+                <p class="contact-cta">Let's build something together.</p>
+                <div class="contact-links">
+                    <a href="mailto:michael@weiser.me" class="contact-link">
+                        <span class="contact-link-label">Email</span>
+                        <span class="contact-link-value">michael@weiser.me</span>
+                    </a>
+                    <a href="https://linkedin.com/in/michael-j-weiser" class="contact-link" target="_blank" rel="noopener">
+                        <span class="contact-link-label">LinkedIn</span>
+                        <span class="contact-link-value">michael-j-weiser</span>
+                    </a>
+                    <a href="https://github.com/weisermichael" class="contact-link" target="_blank" rel="noopener">
+                        <span class="contact-link-label">GitHub</span>
+                        <span class="contact-link-value">weisermichael</span>
+                    </a>
+                    <a href="tel:+18583535179" class="contact-link">
+                        <span class="contact-link-label">Phone</span>
+                        <span class="contact-link-value">(858) 353-5179</span>
+                    </a>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer class="footer">
+        <p>&copy; 2026 Michael Weiser</p>
     </footer>
 
     <script src="js/script.js"></script>
